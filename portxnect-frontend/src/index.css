@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@theme {
+  
+  --color-main-bg: #1A1919;
+  --color-glass-bg: rgba(0, 0, 0, 0.4);
+  --color-glass-bg2: rgba(26, 25, 25, 0.1);
+  --color-brand-color: #00FFBD;
+  --color-button-color: rgba(20, 179, 138, 0.2);
+
+}
