@@ -1,9 +1,9 @@
 import React from 'react'
-import LoginPage from './pages/loginpage'
+import LoginPage from './pages/AuthenticationPage/LoginPage'
 
 const App = () => {
   return (
-    <div className='bg-main-bg h-screen flex items-center justify-center w-screen '>
+    <div className='bg-main-bg md:h-screen min-h-screen flex sm:items-center sm:justify-center w-screen '>
       <LoginPage />
     </div>
   )

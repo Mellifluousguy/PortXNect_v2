@@ -6,12 +6,14 @@
   --color-glass-bg: rgba(0, 0, 0, 0.4);
   --color-glass-bg2: rgba(26, 25, 25, 0.1);
   --color-brand-color: #00FFBD;
-  --color-button-color: rgba(20, 179, 138, 0.2);
+  --color-button-color: rgba(0, 255, 189, 0.3);
+  --color-button-hover: #019B73;
 
 }
 
 *{
   outline: none;
+  transition: all ease-in-out .2s;
 }
 
 h1,
@@ -23,15 +25,13 @@ h6 {
   font-family: 'JetBrains Mono', sans-serif;
 }
 
+button{
+  color: #f1f1f1;
+  cursor: pointer;
+}
+
 body{
   font-family: 'Inter', sans-serif;
 }
 
-h1 {
-  font-size: 24px;
 
-}
-
-label {
-  font-size: 16px;
-}
