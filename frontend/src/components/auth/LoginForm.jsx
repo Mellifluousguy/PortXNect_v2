@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Eye, EyeClosed } from "lucide-react";
+import { loginUser } from "@/api/auth";
 
 const LoginForm = () => {
 
@@ -7,10 +8,17 @@ const LoginForm = () => {
   const [password,setPassword] = useState("");
   const [showPassword,setShowPassword] = useState(false);
 
-  const handleSubmit = (e)=>{
+  const handleSubmit = async (e)=>{
     e.preventDefault();
-    console.log("Login");
-    console.log(email,password);
+      try {
+        const res = await loginUser({
+          email,
+          password
+        })
+        console.log(res.data);
+      } catch (error) {
+        console.error(error);
+      }
   }
 
   return (
