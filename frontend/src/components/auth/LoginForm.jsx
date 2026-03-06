@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Eye, EyeClosed } from "lucide-react";
-import { loginUser } from "@/api/auth";
+import { loginUser, getMe } from "@/api/auth";
 
 const LoginForm = () => {
 
@@ -15,7 +15,12 @@ const LoginForm = () => {
           email,
           password
         })
+        console.log(res.data.token)
+        localStorage.setItem("token", res.data.token);
         console.log(res.data);
+
+        const resp = await getMe();
+        console.log("me data:", resp.data);
       } catch (error) {
         console.error(error);
       }
