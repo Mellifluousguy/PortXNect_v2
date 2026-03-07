@@ -1,29 +1,36 @@
 import { useState } from "react";
 import { Eye, EyeClosed } from "lucide-react";
 import { loginUser, getMe } from "@/api/auth";
+import { useContext } from "react";
+import { AuthContext } from "@/context/AuthContext"
+import { useNavigate } from "react-router-dom"
+
 
 const LoginForm = () => {
 
-  const [email,setEmail] = useState("");
-  const [password,setPassword] = useState("");
-  const [showPassword,setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const { setUser, loadUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  const handleSubmit = async (e)=>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
-      try {
-        const res = await loginUser({
-          email,
-          password
-        })
-        console.log(res.data.token)
-        localStorage.setItem("token", res.data.token);
-        console.log(res.data);
+    try {
+      const res = await loginUser({
+        email,
+        password
+      })
+      
+      // making many things like storing the token in local storage and setting user data
+      await loadUser();
 
-        const resp = await getMe();
-        console.log("me data:", resp.data);
-      } catch (error) {
-        console.error(error);
-      }
+      // navigating to the dasboard after login
+      navigate('/dashboard')
+
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (
@@ -36,7 +43,7 @@ const LoginForm = () => {
         <input
           type="email"
           value={email}
-          onChange={(e)=>setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
           className="w-full border border-white/15 rounded-lg py-2 px-4 bg-[rgba(64,64,64,0.4)]"
         />
       </div>
@@ -48,17 +55,17 @@ const LoginForm = () => {
         <div className="w-full border border-white/15 rounded-lg py-2 px-4 bg-[rgba(64,64,64,0.4)] flex gap-6 ">
 
           <input
-            type={showPassword ? "text":"password"}
+            type={showPassword ? "text" : "password"}
             value={password}
-            onChange={(e)=>setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
             className="w-full bg-transparent"
           />
 
           <span
-            onClick={()=>setShowPassword(p=>!p)}
+            onClick={() => setShowPassword(p => !p)}
             className="cursor-pointer"
           >
-            {showPassword ? <Eye/> : <EyeClosed/>}
+            {showPassword ? <Eye /> : <EyeClosed />}
           </span>
 
         </div>

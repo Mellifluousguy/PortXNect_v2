@@ -1,10 +1,16 @@
 import React from 'react'
-import LoginPage from './pages/AuthenticationPage/LoginPage'
+import { BrowserRouter } from 'react-router-dom';
+import AppRoutes from '@/routes/AppRoutes';
+import { AuthProvider } from './context/AuthContext';
 
 const App = () => {
   return (
-    <div className='bg-main-bg md:h-screen min-h-screen flex sm:items-center sm:justify-center w-screen '>
-      <LoginPage />
+    <div className='bg-main-bg text-gray-300 min-w-screen min-h-screen '>
+      <BrowserRouter>
+        <AuthProvider>
+          <AppRoutes />
+        </AuthProvider>
+      </BrowserRouter>
     </div>
   )
 }

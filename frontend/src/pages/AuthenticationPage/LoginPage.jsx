@@ -8,6 +8,7 @@ const LoginPage = () => {
   const [signUp, setSignUp] = useState(false);
 
   return (
+    <div className="flex sm:items-center sm:justify-center w-screen ">
     <div className="md:w-[85vw] w-full grid lg:grid-cols-7 gap-6 rounded-2xl md:min-h-[80vh] p-2 md:p-6">
 
       {/* LEFT PANEL */}
@@ -61,6 +62,7 @@ const LoginPage = () => {
             </span>
         </div>
       </div>
+    </div>
     </div>
   );
 };
