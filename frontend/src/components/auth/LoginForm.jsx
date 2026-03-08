@@ -3,19 +3,19 @@ import { Eye, EyeClosed } from "lucide-react";
 import { loginUser, getMe } from "@/api/auth";
 import { useContext } from "react";
 import { AuthContext } from "@/context/AuthContext"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 
-const LoginForm = () => {
+const LoginForm = ({setAuthMode}) => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const {loading, loadUser, user } = useContext(AuthContext);
+  const { loading, loadUser, user } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  useEffect(() =>{
-    if(!loading && user){
+  useEffect(() => {
+    if (!loading && user) {
       navigate('/dashboard');
     }
   }, [loading, user])
@@ -27,7 +27,7 @@ const LoginForm = () => {
         email,
         password
       })
-      
+
       localStorage.setItem("token", res.data.token);
       // making many things like storing the token in local storage and setting user data
       await loadUser();
@@ -42,7 +42,7 @@ const LoginForm = () => {
 
   return (
 
-    <form onSubmit={handleSubmit} className="w-full mt-10 flex flex-col gap-4">
+    <form onSubmit={handleSubmit} className="w-full text-base mt-10 flex flex-col gap-4">
 
       <div className="w-full">
         <label className="block mb-2">Email</label>
@@ -78,6 +78,14 @@ const LoginForm = () => {
         </div>
 
       </div>
+
+      <button
+        type="button"
+        onClick={() => setAuthMode("forgot")}
+        className="self-end mt-2 hover:underline"
+      >
+        Forgot Password?
+      </button>
 
       <button
         type="submit"

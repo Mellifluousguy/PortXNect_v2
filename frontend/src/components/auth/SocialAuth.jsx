@@ -2,7 +2,7 @@ const SocialAuth = () => {
 
     
   return (
-    <div className="flex flex-col gap-4 w-full">
+    <div className="flex flex-col text-base gap-4 w-full">
 
       <div className="flex gap-4 w-full mt-4 mb-2 items-center">
         <div className="h-px w-full bg-gray-300"></div>
