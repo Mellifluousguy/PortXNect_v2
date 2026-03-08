@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Eye, EyeClosed } from "lucide-react";
 import { loginUser, getMe } from "@/api/auth";
 import { useContext } from "react";
@@ -11,8 +11,14 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const { setUser, loadUser } = useContext(AuthContext);
+  const {loading, loadUser, user } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  useEffect(() =>{
+    if(!loading && user){
+      navigate('/dashboard');
+    }
+  }, [loading, user])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,9 +28,10 @@ const LoginForm = () => {
         password
       })
       
+      localStorage.setItem("token", res.data.token);
       // making many things like storing the token in local storage and setting user data
       await loadUser();
-
+      console.log(res.data.message);
       // navigating to the dasboard after login
       navigate('/dashboard')
 
