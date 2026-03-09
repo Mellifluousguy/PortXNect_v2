@@ -4,13 +4,15 @@ import { loginUser, getMe } from "@/api/auth";
 import { useContext } from "react";
 import { AuthContext } from "@/context/AuthContext"
 import { Link, useNavigate } from "react-router-dom"
+import API from "../../api/axios";
 
 
-const LoginForm = ({setAuthMode}) => {
+const LoginForm = ({ setAuthMode }) => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [showResend, setShowResend] = useState(false)
   const { loading, loadUser, user } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -19,6 +21,18 @@ const LoginForm = ({setAuthMode}) => {
       navigate('/dashboard');
     }
   }, [loading, user])
+
+  const handleResend = async () => {
+  try {
+    const res = await API.post("/resend-verification", { email })
+
+    alert("Verification link sent again.")
+    console.log(res.data)
+
+  } catch (err) {
+    alert(err.response?.data?.message || "Error sending verification")
+  }
+}
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,7 +50,13 @@ const LoginForm = ({setAuthMode}) => {
       navigate('/dashboard')
 
     } catch (error) {
-      console.error(error);
+      console.log(error);
+
+      const message = error.response?.data?.message || "";
+      if (message.includes("Please verify your email first")) {
+        setShowResend(true);
+      }
+      alert(message || "Something went wrong");
     }
   }
 
@@ -93,6 +113,16 @@ const LoginForm = ({setAuthMode}) => {
       >
         Sign In
       </button>
+
+      {showResend && (
+        <button
+          type="button"
+          onClick={handleResend}
+          className="text-sm text-button-color hover:underline mt-2"
+        >
+          Resend Verification Email
+        </button>
+      )}
 
 
     </form>

@@ -4,7 +4,6 @@ import { forgotPassword } from "../../api/auth"
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("")
-  const [message, setMessage] = useState("")
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -18,8 +17,8 @@ const ForgotPassword = () => {
       console.log(res.data)
 
     } catch (err) {
-      console.error(err)
-      setMessage("Something went wrong")
+      console.log(err)
+      alert("Something went wrong")
     }
   }
 
@@ -39,7 +38,6 @@ const ForgotPassword = () => {
         </button>
       </form>
 
-      {message && <p className="mt-4">{message}</p>}
     </>
   )
 }

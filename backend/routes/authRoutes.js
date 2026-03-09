@@ -1,5 +1,5 @@
 import express from "express"
-import {register,login, forgotPassword, resetPassword} from "../controller/authController.js"
+import {register,login, forgotPassword, resetPassword, verifyEmail, resendVerification} from "../controller/authController.js"
 import User from "../models/User.js"
 import { protect } from "../middleware/authMiddleware.js"
 
@@ -9,6 +9,8 @@ router.post("/register",register)
 router.post("/login",login)
 router.post("/forgot-password", forgotPassword)
 router.post("/reset-password/:token", resetPassword)
+router.get("/verify-email/:token", verifyEmail)
+router.post("/resend-verification", resendVerification)
 
 router.get("/me", protect, async (req, res) => {
     const user = await User.findById(req.user).select("-password");

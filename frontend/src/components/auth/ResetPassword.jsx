@@ -7,7 +7,6 @@ const ResetPassword = () => {
   const navigate = useNavigate()
 
   const [password, setPassword] = useState("")
-  const [message, setMessage] = useState("")
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -19,12 +18,12 @@ const ResetPassword = () => {
 
         { password }
       )
-      setMessage("Password reset successful")
+      alert("Password reset successful")
       setTimeout(() => navigate("/"), 2000)
 
     } catch (err) {
       console.error(err)
-      setMessage("Invalid or expired token")
+      alert("Invalid or expired token")
     }
   }
 
@@ -50,7 +49,6 @@ const ResetPassword = () => {
               </button>
             </form>
 
-            {message && <p className="mt-4">{message}</p>}
           </div>
         </div>
       </div>

@@ -21,7 +21,8 @@ const SignupForm = ({setAuthMode}) => {
             setAuthMode("login");
         }
         catch(error){
-            console.error(error);
+            console.log(error);
+            alert(error.response?.data?.message || "Something went wrong");
         }
     }
 
