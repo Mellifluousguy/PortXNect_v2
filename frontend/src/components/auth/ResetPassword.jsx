@@ -29,24 +29,31 @@ const ResetPassword = () => {
   }
 
   return (
-    <div className="p-10 text-base">
-      <h1 className="text-2xl mb-4">Reset Password</h1>
+    <div className="flex sm:items-center  sm:justify-center w-screen h-screen">
+      <div className="md:w-[75vw] w-full flex justify-center items-center gap-6 rounded-2xl md:min-h-[80vh] p-2 md:p-6">
 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <input
-          type="password"
-          placeholder="Enter new password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="border p-2"
-        />
+        <div className="lg:min-w-2/5 max-w-80  w-full bg-black/20 md:h-full border-white/15 col-span-4 border p-4 rounded-2xl">
+          <div className="w-full bg-black/20 h-full border-white/15 border p-6 md:p-10 flex flex-col items-center justify-center rounded-2xl">
+            <h1 className="text-2xl mb-10">Reset Password</h1>
 
-        <button type="submit" className="bg-green-500 text-white p-2">
-          Reset Password
-        </button>
-      </form>
+            <form onSubmit={handleSubmit} className="flex flex-col w-full gap-4">
+              <input
+                type="password"
+                placeholder="Enter new password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full border border-white/15 rounded-lg py-2 px-4 bg-[rgba(64,64,64,0.4)]"
+              />
 
-      {message && <p className="mt-4">{message}</p>}
+              <button type="submit" className="bg-button-color py-2 rounded-full">
+                Reset Password
+              </button>
+            </form>
+
+            {message && <p className="mt-4">{message}</p>}
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

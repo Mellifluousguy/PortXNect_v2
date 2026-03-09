@@ -25,16 +25,16 @@ const ForgotPassword = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="flex w-full flex-col gap-4">
+      <form onSubmit={handleSubmit} className="flex h-full  justify-center  w-full flex-col gap-4">
         <input
           type="email"
           placeholder="Enter your email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="border p-2"
+          className="w-full border border-white/15 rounded-lg py-2 px-4 bg-[rgba(64,64,64,0.4)]"
         />
 
-        <button type="submit" className="bg-blue-500 text-white p-2">
+        <button type="submit" className="bg-button-color py-2 rounded-full">
           Send Reset Link
         </button>
       </form>

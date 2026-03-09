@@ -10,11 +10,11 @@ const LoginPage = () => {
   const [authMode, setAuthMode] = useState("login");
   return (
     <div className="flex sm:items-center  sm:justify-center w-screen h-screen">
-      <div className="md:w-[75vw] w-full grid lg:grid-cols-7 gap-6 rounded-2xl md:min-h-[80vh] p-2 md:p-6">
+      <div className="md:w-[75vw] w-full grid lg:grid-cols-7 gap-6 rounded-2xl md:min-h-auto p-2 md:p-6">
 
         {/* LEFT PANEL */}
         <div className="w-full hidden lg:block bg-black/20 h-full border-white/15 col-span-4 border p-6 rounded-2xl">
-          <div className="w-full bg-black/20 h-full border-white/15 border p-10 flex flex-col items-start justify-between rounded-2xl">
+          <div className={`w-full bg-black/20 h-full border-white/15 ${authMode === "forgot" ? "gap-10" : ""} border p-10 flex flex-col items-start justify-between rounded-2xl`}>
 
             <img
               src="/logo-tagline.svg"
@@ -23,11 +23,11 @@ const LoginPage = () => {
               loading="lazy"
             />
 
-            <div className="h-4/6 self-center bg-[radial-gradient(circle_at_center,rgba(0,255,189,0.15)_0%,transparent_50%)]">
+            <div className=" self-center bg-[radial-gradient(circle_at_center,rgba(0,255,189,0.15)_0%,transparent_50%)]">
               <img
-                src="/SVG-Images/svg4.svg"
+                src={authMode === "login" ? `/SVG-Images/login.svg` : authMode === "signup" ? `/SVG-Images/signup.svg` : `/SVG-Images/forgot.svg`}
                 alt="Login Image"
-                className="max-h-full select-none"
+                className=" max-h-96 select-none"
                 loading="lazy"
               />
             </div>
