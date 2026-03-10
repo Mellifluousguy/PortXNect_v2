@@ -5,9 +5,9 @@ const DashboardLayout = () => {
   return (
     <div className="flex p-6">
       <div className="flex p-6 bg-black/80 rounded-2xl w-full h-full">
-      <div className="w-20 border border-white/20 relative rounded-2xl p-4">
+      <div className="w-20 border border-white/20 relative rounded-2xl pt-6">
         <Sidebar />
-      </div>
+      </div>ff
         <div className="flex-1 p-6">
           <Outlet />
         </div>

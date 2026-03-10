@@ -4,9 +4,11 @@ import { AuthContext } from '@/context/AuthContext'
 const SideBar = () => {
   const {logout} = useContext(AuthContext)
   return (
-    <div className=' absolute'>
-      hello
-      <br />
+    <div className=' absolute  flex items-center flex-col w-full'>
+      <img src="/assets/logo.png" alt="Logo" /> 
+      
+
+
         <button onClick={logout}>logout</button> 
     </div> 
   )
