@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '@/context/AuthContext'
-import { Home } from 'lucide-react'
+import { Home, LogOut, MessageCircle, Settings, User, Users } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
 
 
@@ -13,29 +13,47 @@ const SideBar = () => {
     <NavLink
       to={to}
       className={({ isActive }) =>
-        `flex items-center gap-4 px-4 py-3 rounded-full transition-all duration-300
+        `flex items-center group-hover:gap-4 group-hover:px-6 h-12 w-12  group-hover:justify-start group-hover:w-3xs justify-center rounded-full transition-all duration-10
         ${isActive
           ? "bg-linear-to-r from-emerald-800/70 to-emerald-600/40"
           : "bg-white/5 hover:bg-white/10"
         }`
       }
     >
-      <Icon size={22} />
-      <span className="whitespace-nowrap  group-hover:opacity-100 transition-opacity duration-300">
+      <Icon size={22} strokeWidth={1.5} />
+      <span className="whitespace-nowrap w-0 group-hover:w-max overflow-hidden transition-all duration-300">
         {label}
       </span>
     </NavLink>
   )
 
   return (
-    <div className='  flex items-center flex-col w-full'>
-      <img src="/assets/logo.png" alt="Logo" />
+    <div className='group hover:px-4 h-full py-10 flex items-center flex-col w-20 hover:w-max transition-all duration-300 overflow-hidden'>
+      <div className='mb-10'>
 
-      {navItem("/dashboard", Home, "Home")}
+        <img src="/assets/logo.png" alt="Logo" className='w-10' />
+
+      </div>
+      <div className='flex flex-col justify-between h-full'>
+
+        <div className='flex flex-col gap-4'>
+          {navItem("/dashboard", Home, "Home")}
+          {navItem("/connect", Users, "Connect")}
+          {navItem("/messages", MessageCircle, "Messages")}
+          {navItem("/profile", User, "Profile")}
+          {navItem("/settings", Settings, "Settings")}
+        </div>
 
 
 
-      <button onClick={logout}>logout</button>
+        <button onClick={logout} className={`flex bg-white/5 hover:bg-white/10 items-center group-hover:gap-4 group-hover:px-6 h-12 w-12  group-hover:justify-start group-hover:w-3xs justify-center rounded-full transition-all duration-10
+`}>
+          <LogOut size={22} strokeWidth={1.5} />
+          <span className="whitespace-nowrap w-0 group-hover:w-max overflow-hidden transition-all duration-300">
+            Logout
+          </span>
+        </button>
+      </div>
     </div>
   )
 }
