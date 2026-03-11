@@ -32,6 +32,7 @@ const SideBar = () => {
       <div className='mb-10'>
 
         <img src="/assets/logo.png" alt="Logo" className='w-10' />
+        <img src="/logo-tagline.svg" alt="" />
 
       </div>
       <div className='flex flex-col justify-between h-full'>
