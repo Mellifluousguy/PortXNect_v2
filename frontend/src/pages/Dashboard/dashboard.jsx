@@ -6,8 +6,7 @@ const dashboard = () => {
   const {user} = useContext(AuthContext)
   return (
 
-    <div>
-      {user.email}
+    <div className='w-full bg-amber-100 h-full'>
     </div>
   )
 }
