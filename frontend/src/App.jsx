@@ -5,7 +5,7 @@ import { AuthProvider } from './context/AuthContext';
 
 const App = () => {
   return (
-    <div className='bg-main-bg text-gray-300 min-w-screen min-h-screen '>
+    <div className='bg-main-bg text-gray-300 min-w-screen min-h-screen max-w-400'>
       <BrowserRouter>
         <AuthProvider>
           <AppRoutes />

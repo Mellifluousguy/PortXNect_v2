@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom"
-import { LoginPage, Dashboard } from "../pages"
+import { LoginPage, Dashboard, Profile } from "../pages"
 import DashboardLayout from "@/layouts/DashboardLayout"
 import ProtectedRoute from "./ProtectedRoute"
 import ResetPassword from "../components/auth/ResetPassword"
@@ -12,7 +12,8 @@ const AppRoutes = () => {
       <Route path="/verify-email/:token" element={<VerifyEmail />} />
       <Route element={<ProtectedRoute />}>
         <Route element={<DashboardLayout />}>
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard />} /> 
+          <Route path="/profile" element={<Profile/>}/>
         </Route>
       </Route>
 

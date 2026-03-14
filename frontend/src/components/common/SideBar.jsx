@@ -13,7 +13,7 @@ const SideBar = () => {
     <NavLink
       to={to}
       className={({ isActive }) =>
-        `flex items-center group-hover:gap-4 group-hover:px-6 h-12 w-12  group-hover:justify-start group-hover:w-full justify-center rounded-full transition-all duration-10
+        `flex items-center group-hover:gap-4 group-hover:px-6 hover:shadow-md shadow-white/5 h-12 w-12  group-hover:justify-start group-hover:w-full justify-center rounded-full transition-all duration-10
         ${isActive
           ? "bg-linear-to-r from-emerald-800/70 to-emerald-600/40"
           : "bg-white/5 hover:bg-white/10"
