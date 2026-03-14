@@ -1,15 +1,18 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom';
 import AppRoutes from '@/routes/AppRoutes';
-import { AuthProvider } from './context/AuthContext';
+import { AuthProvider } from '@/context/AuthContext';
+import { FunProvider } from '@/context/FunContext';
 
 const App = () => {
   return (
     <div className='bg-main-bg text-gray-300 min-w-screen min-h-screen max-w-400'>
       <BrowserRouter>
-        <AuthProvider>
-          <AppRoutes />
-        </AuthProvider>
+        <FunProvider>
+          <AuthProvider>
+            <AppRoutes />
+          </AuthProvider>
+        </FunProvider>
       </BrowserRouter>
     </div>
   )

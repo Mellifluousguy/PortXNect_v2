@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { Card } from "@/components";
+import { useFun } from "@/context/FunContext";
 
 const navItems = [
   { to: "/dashboard", icon: Home, label: "Home" },
@@ -21,7 +22,10 @@ const navItems = [
 
 const SideBar = () => {
   const { logout } = useContext(AuthContext);
-
+  const { scrollRef } = useFun()
+  setTimeout( () =>(
+    console.log(scrollRef)
+  ), 3000)
   return (
     <Card className="group px-4 h-full py-10 flex items-center flex-col w-20 hover:w-64 transition-all duration-500 overflow-hidden">
 
@@ -53,10 +57,9 @@ const SideBar = () => {
               to={to}
               className={({ isActive }) =>
                 `flex items-center group-hover:gap-4 group-hover:px-6 hover:shadow-md shadow-white/5 h-12 w-12 group-hover:justify-start group-hover:w-full justify-center rounded-full transition-all duration-10
-                ${
-                  isActive
-                    ? "bg-linear-to-r from-emerald-800/70 to-emerald-600/40"
-                    : "bg-white/5 hover:bg-white/10"
+                ${isActive
+                  ? "bg-linear-to-r from-emerald-800/70 to-emerald-600/40"
+                  : "bg-white/5 hover:bg-white/10"
                 }`
               }
             >
