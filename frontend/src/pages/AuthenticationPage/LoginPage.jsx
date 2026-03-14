@@ -36,7 +36,7 @@ const LoginPage = () => {
         </div>
 
         {/* RIGHT PANEL */}
-        <div className="w-full bg-black/20  h-full border-white/15 col-span-3 border p-3 md:p-6 rounded-2xl">
+        <div className="w-full bg-black/20 h-full border-white/15 col-span-3 border p-3 md:p-6 rounded-2xl">
 
           <div className="w-full text-gray-300 md:text-lg text-sm bg-black/20 bg-[radial-gradient(circle_at_center,rgba(0,255,189,0.15)_0%,transparent_50%)] border-white/15 border p-6 flex flex-col items-center rounded-2xl h-full">
 
