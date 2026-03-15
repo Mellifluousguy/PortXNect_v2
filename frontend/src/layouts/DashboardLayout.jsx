@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 const DashboardLayout = () => {
   const location = window.location.pathname;
-  
+console.log(location);
 
   return (
     <div className="flex p-6 max-h-lvh h-lvh">
@@ -23,7 +23,7 @@ const DashboardLayout = () => {
           </div>
         </div>
 
-        <Card className="w-full h-full p-6 overflow-y-auto">
+          <Card className={`w-full h-full overflow-y-auto`}>
           <Outlet />
         </Card>
 
